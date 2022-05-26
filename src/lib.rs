@@ -14,6 +14,8 @@ mod panic;
 mod patches;
 mod start;
 
+// mod bindings;
+
 /// A hack to make sure that the rwlock implementation and the esp32c3 atomics are linked to the final executable
 /// Call this function once e.g. in the beginning of your main function
 ///
@@ -73,5 +75,6 @@ pub mod c_types {
 mod bindings {
     use super::c_types;
 
+    // include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
     include!(env!("EMBUILD_GENERATED_BINDINGS_FILE"));
 }

@@ -1,15 +1,12 @@
 #[cfg(not(any(feature = "pio", feature = "native")))]
 compile_error!("One of the features `pio` or `native` must be selected.");
 
-use std::env;
-use std::iter::once;
-use std::path::PathBuf;
+use std::{env, iter::once, path::PathBuf};
 
 use ::bindgen::callbacks::{IntKind, ParseCallbacks};
 use anyhow::*;
 use common::*;
-use embuild::utils::OsStrExt;
-use embuild::{bindgen, build, cargo, kconfig, path_buf};
+use embuild::{bindgen, build, cargo, kconfig, path_buf, utils::OsStrExt};
 
 mod common;
 
@@ -92,6 +89,7 @@ fn main() -> anyhow::Result<()> {
         build_output
             .bindgen
             .builder()?
+            .rustfmt_bindings(true)
             .parse_callbacks(Box::new(BindgenCallbacks))
             .ctypes_prefix("c_types")
             .header(header_file.try_to_str()?)

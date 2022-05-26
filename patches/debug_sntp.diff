@@ -1,0 +1,15 @@
+diff --git a/components/lwip/port/esp32/include/lwipopts.h b/components/lwip/port/esp32/include/lwipopts.h
+index 98a85fc2d9..b431f2af46 100644
+--- a/components/lwip/port/esp32/include/lwipopts.h
++++ b/components/lwip/port/esp32/include/lwipopts.h
+@@ -911,6 +911,10 @@
+  */
+ #define TCP_OOSEQ_DEBUG                 LWIP_DBG_OFF
+
++#define SNTP_DEBUG                      LWIP_DBG_ON
++#define DNS_DEBUG                       LWIP_DBG_ON
++#define UDP_DEBUG                       LWIP_DBG_ON
++
+ /**
+  * ETHARP_TRUST_IP_MAC==1: Incoming IP packets cause the ARP table to be
+  * updated with the source MAC and IP addresses supplied in the packet.
